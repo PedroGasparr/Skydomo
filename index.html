@@ -1,0 +1,1980 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skydomo - Hospedagens em Domos de Luxo em Meio à Natureza</title>
+    <meta name="description" content="Viva a experiência única de hospedagem em domos geodésicos de luxo. Conforto, privacidade e integração total com a natureza em uma hospedagem inesquecível sob as estrelas.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ===== VARIÁVEIS E RESET ===== */
+        :root {
+            --gold: #C6A25A;
+            --gold-light: #D4B87A;
+            --gold-dark: #B89448;
+            --dark-blue: #0B0B10;
+            --dark-blue-light: #12121F;
+            --dark-blue-lighter: #1A1A2E;
+            --brown: #4B2E1E;
+            --brown-light: #5C3A2A;
+            --green: #2E4F3E;
+            --green-light: #3A614D;
+            --white: #FFFFFF;
+            --white-transparent: rgba(255, 255, 255, 0.8);
+            --gray-light: #F5F5F5;
+            --transition-slow: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --transition-medium: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --transition-fast: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --shadow-medium: 0 15px 35px rgba(0, 0, 0, 0.12);
+            --shadow-strong: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.7;
+            color: var(--white);
+            background-color: var(--dark-blue);
+            overflow-x: hidden;
+            font-weight: 400;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 500;
+            line-height: 1.3;
+            margin-bottom: 1.5rem;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition-fast);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        .section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+            font-weight: 500;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: var(--transition-medium);
+            cursor: pointer;
+            border: none;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: var(--transition-medium);
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: var(--gold);
+            color: var(--dark-blue);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-strong);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--gold);
+            border: 1px solid var(--gold);
+        }
+
+        .btn-outline:hover {
+            background: var(--gold);
+            color: var(--dark-blue);
+        }
+
+        /* ===== ANIMAÇÕES PERSONALIZADAS ===== */
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes pulse-gold {
+            0% {
+                box-shadow: 0 0 0 0 rgba(198, 162, 90, 0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(198, 162, 90, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(198, 162, 90, 0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes twinkle {
+            0%, 100% {
+                opacity: 0.2;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .animate-pulse-gold {
+            animation: pulse-gold 2s infinite;
+        }
+
+        .animate-fadeInUp {
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
+        .animate-fadeInLeft {
+            animation: fadeInLeft 1s ease-out forwards;
+        }
+
+        .animate-fadeInRight {
+            animation: fadeInRight 1s ease-out forwards;
+        }
+
+        /* ===== PARTÍCULAS E EFEITOS VISUAIS ===== */
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        .twinkling-stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .star {
+            position: absolute;
+            background-color: var(--white);
+            border-radius: 50%;
+            animation: twinkle 4s infinite ease-in-out;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 25px 0;
+            transition: var(--transition-medium);
+        }
+
+        header.scrolled {
+            background: rgba(11, 11, 16, 0.95);
+            backdrop-filter: blur(15px);
+            padding: 15px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            z-index: 1001;
+        }
+
+        .logo-svg {
+            height: 60px;
+            width: 60px;
+            margin-right: 15px;
+            transition: var(--transition-medium);
+        }
+
+        .logo-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: var(--gold);
+            letter-spacing: 1px;
+        }
+
+        .nav-menu {
+            display: flex;
+        }
+
+        .nav-item {
+            margin-left: 40px;
+            position: relative;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            font-size: 1rem;
+            transition: var(--transition-fast);
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--gold);
+            transition: var(--transition-medium);
+        }
+
+        .nav-link:hover {
+            color: var(--gold);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .bar {
+            display: block;
+            width: 25px;
+            height: 2px;
+            margin: 5px auto;
+            transition: var(--transition-medium);
+            background-color: var(--white);
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -3;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(11, 11, 16, 0.4), rgba(11, 11, 16, 0.7));
+            z-index: -2;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            padding: 0 30px;
+            z-index: 1;
+        }
+
+        .hero-title {
+            font-size: 5rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            font-weight: 500;
+            line-height: 1.1;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.5s forwards;
+        }
+
+        .hero-subtitle {
+            font-size: 1.8rem;
+            margin-bottom: 3rem;
+            font-weight: 300;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.8s forwards;
+        }
+
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 1.1s forwards;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: var(--gold);
+            opacity: 0.7;
+            transition: var(--transition-medium);
+        }
+
+        .scroll-indicator:hover {
+            opacity: 1;
+        }
+
+        .scroll-indicator span {
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .scroll-indicator i {
+            font-size: 1.2rem;
+            animation: float 2s ease-in-out infinite;
+        }
+
+        /* ===== SOBRE SECTION ===== */
+        .about {
+            background-color: var(--dark-blue-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            color: var(--gold);
+        }
+
+        .about-text p {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 3rem;
+        }
+
+        .feature {
+            display: flex;
+            align-items: flex-start;
+            padding: 25px;
+            border-radius: 10px;
+            transition: var(--transition-medium);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.06);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .feature-icon {
+            font-size: 2.2rem;
+            color: var(--gold);
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+
+        .feature-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .about-images {
+            position: relative;
+            height: 600px;
+        }
+
+        .about-img {
+            position: absolute;
+            border-radius: 10px;
+            box-shadow: var(--shadow-strong);
+            transition: var(--transition-slow);
+            overflow: hidden;
+        }
+
+        .about-img::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, rgba(11, 11, 16, 0.1));
+            opacity: 0;
+            transition: var(--transition-medium);
+        }
+
+        .about-img:hover::after {
+            opacity: 1;
+        }
+
+        .about-img-1 {
+            width: 70%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        .about-img-2 {
+            width: 60%;
+            bottom: 0;
+            right: 0;
+            z-index: 2;
+        }
+
+        .about-img:hover {
+            transform: scale(1.03);
+            z-index: 3;
+        }
+
+        /* ===== GALERIA SECTION ===== */
+        .gallery {
+            background-color: var(--dark-blue);
+            position: relative;
+        }
+
+        .gallery-filters {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .filter-btn {
+            padding: 10px 25px;
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition-medium);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--gold);
+            color: var(--dark-blue);
+            border-color: var(--gold);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            height: 280px;
+            cursor: pointer;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .gallery-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition-slow);
+        }
+
+        .gallery-item:hover .gallery-img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, rgba(11, 11, 16, 0.8));
+            display: flex;
+            align-items: flex-end;
+            padding: 25px;
+            opacity: 0;
+            transition: var(--transition-medium);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-info h3 {
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+            transform: translateY(20px);
+            transition: var(--transition-medium);
+        }
+
+        .gallery-item:hover .gallery-info h3 {
+            transform: translateY(0);
+        }
+
+        .gallery-info p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            transform: translateY(20px);
+            transition: var(--transition-medium);
+            transition-delay: 0.1s;
+        }
+
+        .gallery-item:hover .gallery-info p {
+            transform: translateY(0);
+        }
+
+        .youtube-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.youtube-background iframe {
+    width: 100vw;
+    height: 56.25vw; /* 16:9 aspect ratio */
+    min-height: 100vh;
+    min-width: 177.77vh; /* 16:9 aspect ratio */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}
+
+.hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+/* Mantenha o overlay para melhor legibilidade */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 0;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+        /* ===== EXPERIÊNCIA SECTION ===== */
+        .experience {
+            background-color: var(--dark-blue-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .experience-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .experience-card {
+            background: var(--dark-blue);
+            border-radius: 15px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: var(--transition-medium);
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .experience-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--gold), var(--gold-light));
+            transform: scaleX(0);
+            transition: var(--transition-medium);
+        }
+
+        .experience-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-strong);
+        }
+
+        .experience-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .card-icon {
+            font-size: 3.5rem;
+            color: var(--gold);
+            margin-bottom: 25px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .card-text {
+            opacity: 0.8;
+        }
+
+        /* ===== DEPOIMENTOS SECTION ===== */
+        .testimonials {
+            background-color: var(--dark-blue);
+            position: relative;
+        }
+
+        .testimonials-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: var(--dark-blue-light);
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition-medium);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 25px;
+            position: relative;
+            line-height: 1.8;
+        }
+
+        .testimonial-text::before {
+            content: '"';
+            font-size: 4rem;
+            color: var(--gold);
+            opacity: 0.3;
+            position: absolute;
+            top: -20px;
+            left: -10px;
+            line-height: 1;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+            border: 2px solid var(--gold);
+        }
+
+        .author-info h4 {
+            margin-bottom: 5px;
+            font-size: 1.2rem;
+        }
+
+        .author-info p {
+            margin-bottom: 0;
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        .rating {
+            color: var(--gold);
+            margin-top: 5px;
+        }
+
+        /* ===== LOCALIZAÇÃO SECTION ===== */
+        .location {
+            background-color: var(--dark-blue-light);
+            position: relative;
+        }
+
+        .location-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .location-info h2 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            color: var(--gold);
+        }
+
+        .location-info p {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .location-features {
+            margin-top: 30px;
+        }
+
+        .location-feature {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .location-feature i {
+            color: var(--gold);
+            margin-right: 15px;
+            font-size: 1.2rem;
+        }
+
+        .location-map {
+            height: 500px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow-strong);
+        }
+
+        .location-map iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* ===== RESERVA SECTION ===== */
+        .reservation {
+            background-color: var(--dark-blue);
+            position: relative;
+        }
+
+        .reservation-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .reservation-info h2 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            color: var(--gold);
+        }
+
+        .reservation-info p {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .reservation-features {
+            margin-top: 30px;
+        }
+
+        .reservation-feature {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .reservation-feature i {
+            color: var(--gold);
+            margin-right: 15px;
+            font-size: 1.2rem;
+        }
+
+        .reservation-form {
+            background: var(--dark-blue-light);
+            padding: 50px 40px;
+            border-radius: 15px;
+            box-shadow: var(--shadow-strong);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .form-title {
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            text-align: center;
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--gold);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .form-control {
+    width: 100%;
+    padding: 15px 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--white);
+    font-family: 'Montserrat', sans-serif;
+    transition: var(--transition-medium);
+    font-size: 1rem;
+    appearance: none; 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+
+.form-control option {
+    background: #ffffff;
+    color: #000000;
+    font-size: 1rem;
+    padding: 12px 20px;
+}
+
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 0 2px rgba(198, 162, 90, 0.2);
+        }
+
+        .form-submit {
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: var(--dark-blue-light);
+            padding: 80px 0 30px;
+            position: relative;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .footer-logo {
+            margin-bottom: 25px;
+        }
+
+        .footer-logo .logo-text {
+            font-size: 2.5rem;
+        }
+
+        .footer-about p {
+            margin-bottom: 25px;
+            opacity: 0.8;
+        }
+
+        .footer-links h3, .footer-contact h3 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            position: relative;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 500;
+        }
+
+        .footer-links h3::after, .footer-contact h3::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--gold);
+        }
+
+        .footer-links ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links ul li a {
+            transition: var(--transition-fast);
+            opacity: 0.8;
+        }
+
+        .footer-links ul li a:hover {
+            color: var(--gold);
+            padding-left: 5px;
+            opacity: 1;
+        }
+
+        .footer-contact p {
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            opacity: 0.8;
+        }
+
+        .contact-icon {
+            margin-right: 12px;
+            color: var(--gold);
+            width: 20px;
+            text-align: center;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            transition: var(--transition-medium);
+            font-size: 1.2rem;
+        }
+
+        .social-icon:hover {
+            background: var(--gold);
+            color: var(--dark-blue);
+            transform: translateY(-5px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        /* ===== RESPONSIVIDADE ===== */
+        @media screen and (max-width: 1200px) {
+            .section-title {
+                font-size: 3rem;
+            }
+            
+            .hero-title {
+                font-size: 4rem;
+            }
+            
+            .about-content, .reservation-content, .location-content {
+                gap: 60px;
+            }
+            
+            .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media screen and (max-width: 992px) {
+            .section {
+                padding: 80px 0;
+            }
+            
+            .about-content, .reservation-content, .location-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-images {
+                height: 500px;
+                margin-top: 50px;
+                order: -1;
+            }
+            
+            .experience-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .hamburger.active .bar:nth-child(1) {
+                transform: translateY(7px) rotate(45deg);
+            }
+            
+            .hamburger.active .bar:nth-child(3) {
+                transform: translateY(-7px) rotate(-45deg);
+            }
+            
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 0;
+                gap: 0;
+                flex-direction: column;
+                background-color: var(--dark-blue);
+                width: 100%;
+                height: 100vh;
+                text-align: center;
+                transition: var(--transition-medium);
+                padding-top: 100px;
+                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-item {
+                margin: 25px 0;
+            }
+            
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.5rem;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .about-features {
+                grid-template-columns: 1fr;
+            }
+            
+            .experience-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            .section {
+                padding: 60px 0;
+            }
+            
+            .reservation-form {
+                padding: 40px 25px;
+            }
+            
+            .testimonial-card {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">
+                    <div class="logo-svg">
+                        <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M30 5L5 30L30 55L55 30L30 5Z" stroke="#C6A25A" stroke-width="2"/>
+                            <circle cx="30" cy="30" r="18" stroke="#C6A25A" stroke-width="2"/>
+                            <circle cx="30" cy="30" r="10" stroke="#C6A25A" stroke-width="2"/>
+                            <circle cx="30" cy="30" r="4" fill="#C6A25A"/>
+                            <circle cx="18" cy="18" r="1.5" fill="#C6A25A"/>
+                            <circle cx="42" cy="18" r="1.5" fill="#C6A25A"/>
+                            <circle cx="18" cy="42" r="1.5" fill="#C6A25A"/>
+                            <circle cx="42" cy="42" r="1.5" fill="#C6A25A"/>
+                        </svg>
+                    </div>
+                    <span class="logo-text">Skydomo</span>
+                </a>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="#home" class="nav-link">Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#about" class="nav-link">Sobre</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#gallery" class="nav-link">Galeria</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#experience" class="nav-link">Experiência</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#testimonials" class="nav-link">Depoimentos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#location" class="nav-link">Localização</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#reservation" class="nav-link">Reserva</a>
+                    </li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-video">
+            <!-- Vídeo do YouTube como background -->
+            <div class="youtube-background">
+                <iframe 
+                    src="https://www.youtube.com/embed/2vj0qxL206Y?autoplay=1&mute=1&loop=1&playlist=2vj0qxL206Y&controls=0&showinfo=0&rel=0&modestbranding=1&background=1&iv_load_policy=3&disablekb=1"
+                    frameborder="0" 
+                    allow="autoplay; encrypted-media" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+        <div class="hero-overlay"></div>
+        <div id="particles-js"></div>
+        <div class="twinkling-stars" id="twinkling-stars"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Viva a Experiência Skydomo</h1>
+            <p class="hero-subtitle">Hospedagem única sob as estrelas em meio à natureza</p>
+            <div class="hero-btns">
+                <a href="#reservation" class="btn btn-primary animate-pulse-gold">Reserve sua estadia</a>
+                <a href="#about" class="btn btn-outline">Conheça mais</a>
+            </div>
+        </div>
+        <a href="#about" class="scroll-indicator">
+            <span>Explore</span>
+            <i class="fas fa-chevron-down"></i>
+        </a>
+    </section>
+
+    <!-- Sobre Section -->
+    <section class="section about" id="about">
+        <div class="container">
+            <h2 class="section-title">Sobre o Skydomo</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Uma experiência única em meio à natureza</h2>
+                    <p>O Skydomo oferece uma experiência de hospedagem exclusiva em domos geodésicos de luxo, projetados para proporcionar conforto máximo e integração total com a natureza. Cada detalhe foi cuidadosamente pensado para criar uma atmosfera de tranquilidade e conexão com o ambiente natural.</p>
+                    <p>Cada domo é estrategicamente posicionado para oferecer vistas panorâmicas deslumbrantes, permitindo que nossos hóspedes desfrutem do céu estrelado em toda sua magnitude, sem abrir mão do conforto e sofisticação de um hotel 5 estrelas.</p>
+                    <div class="about-features">
+                        <div class="feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-star-and-crescent"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h3>Céu Estrelado</h3>
+                                <p>Vista privilegiada do céu noturno através da cúpula transparente</p>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-mountain"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h3>Natureza Preservada</h3>
+                                <p>Integração total com o ambiente natural em áreas protegidas</p>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-couch"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h3>Conforto Absoluto</h3>
+                                <p>Todas as comodidades de um hotel de luxo em meio à natureza</p>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h3>Experiência Personalizada</h3>
+                                <p>Serviço exclusivo e atenção aos detalhes para cada hóspede</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-images">
+                    <img src="img/interiorskydomo.JPG" alt="Interior do domo Skydomo" class="about-img about-img-1">
+                    <img src="img/externa_vista_domo.JPG" alt="Vista externa do domo Skydomo" class="about-img about-img-2">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galeria Section -->
+    <section class="section gallery" id="gallery">
+        <div class="container">
+            <h2 class="section-title">Nossa Galeria</h2>
+            <div class="gallery-filters">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="interior">Interiores</button>
+                <button class="filter-btn" data-filter="exterior">Exteriores</button>
+                <button class="filter-btn" data-filter="natureza">Natureza</button>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item" data-category="interior">
+                    <img src="img/cama_domo.JPG" alt="Interior do domo" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h3>Interior Confortável</h3>
+                            <p>Cama king-size e decoração sofisticada</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="exterior">
+                    <img src="img/momentounico.JPG" alt="Exterior do domo" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h3>Vista Exclusiva</h3>
+                            <p>Domo com vista para a natureza preservada</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="natureza">
+                    <img src="img/ceu_estrelado_domo.JPG" alt="Céu estrelado visto do domo" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h3>Céu Estrelado</h3>
+                            <p>Vista deslumbrante do firmamento noturno</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="interior">
+                    <img src="img/vista_exclusiva.JPG" alt="Banheira com vista para a natureza" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h3>Banheira de Luxo</h3>
+                            <p>Relaxe com vista para a natureza</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="exterior">
+                    <img src="img/Ar_livre.JPG" alt="Área externa do domo" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h3>Área Externa</h3>
+                            <p>Espaço exclusivo para relaxamento ao ar livre</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="natureza">
+                    <img src="img/skydomo.JPG" alt="Paisagem natural ao redor do domo" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h3>Skydomo</h3>
+                            <p>Momentos exclusivos para compartilhar com aqueles que amamos</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experiência Section -->
+    <section class="section experience" id="experience">
+        <div id="particles-js-2"></div>
+        <div class="container">
+            <h2 class="section-title">Nossa Experiência</h2>
+            <div class="experience-cards">
+                <div class="experience-card">
+                    <div class="card-icon">
+                        <i class="fas fa-star-and-crescent"></i>
+                    </div>
+                    <h3 class="card-title">Vista Panorâmica das Estrelas</h3>
+                    <p class="card-text">Desfrute de uma vista desobstruída do céu noturno através da cúpula transparente, permitindo observação astronômica excepcional em qualquer época do ano.</p>
+                </div>
+                <div class="experience-card">
+                    <div class="card-icon">
+                        <i class="fas fa-couch"></i>
+                    </div>
+                    <h3 class="card-title">Conforto e Privacidade</h3>
+                    <p class="card-text">Cada domo é equipado com cama king-size, banheiro privativo, ar condicionado, lareira e todas as comodidades de um hotel 5 estrelas em meio à natureza.</p>
+                </div>
+                <div class="experience-card">
+                    <div class="card-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3 class="card-title">Integração com a Natureza</h3>
+                    <p class="card-text">Localizados em áreas preservadas, nossos domos oferecem privacidade total e conexão genuína com o ambiente natural ao redor, com trilhas privativas e áreas de contemplação.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Depoimentos Section -->
+    <section class="section testimonials" id="testimonials">
+        <div class="container">
+            <h2 class="section-title">O Que Nossos Hóspedes Dizem</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">lugar perfeito! ficamos dois dias e foi tempo suficiente para curtir todos os espaços da casa, fizemos jantar, tomamos café na área externa, fizemos Marshmello na fogueira, tudo funciona super bem, a casa é perfeita.  O Rodrigo muito atencioso nos ajudou com indicações de transporte, contratamos o serviço de jantar, comida perfeita, muito saborosa, bem servida, amamos tudo, Sr Sílvio extremamente pontual com os horários do serviço, muito solicito e atensioso. Vamos sonhar com nossa próxima visita com certeza.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Ana Silva">
+                        </div>
+                        <div class="author-info">
+                            <h4>Ana Silva</h4>
+                            <p>Hóspede - Lua de Mel</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">Amamos o domo! Lugar incrível, lindo, aconchegante e surreal! Exatamente como nas fotos e de fácil acesso mesmo sendo estrada de terra. Aproveitamos muito a banheira, o cinema e a fogueira. É um lugar para se desconectar da rotina do dia a dia e se conectar com a natureza, descansar e curtir a paz do local. Fomos em 3 adultos, 1 criança e 1 Pet e foi tudo perfeito!</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Carlos Mendes">
+                        </div>
+                        <div class="author-info">
+                            <h4>Carlos Mendes</h4>
+                            <p>Hóspede - Passeio</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">Experiência inesquecível!
+Nos hospedamos na domo de vidro do sábado para o domingo e vivemos momentos incríveis! O lugar é simplesmente deslumbrante — acolhedor, romântico e perfeito para quem busca uma experiência diferente e especial.
+Fizemos nossa sessão de fotos do pré-wedding lá e não poderíamos ter escolhido cenário melhor. Cada detalhe da hospedagem transmite cuidado e carinho. Fomos muito bem recebidos por toda a equipe, especialmente pelo Sílvio e Rodrigo, que foram extremamente atenciosos e prestativos em todos os momentos.
+Com certeza voltaremos — e recomendamos de olhos fechados!</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Mariana Torres">
+                        </div>
+                        <div class="author-info">
+                            <h4>Mariana Torres</h4>
+                            <p>Hóspede - Viagem em Família</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Localização Section -->
+    <section class="section location" id="location">
+        <div class="container">
+            <h2 class="section-title">Nossa Localização</h2>
+            <div class="location-content">
+                <div class="location-info">
+                    <h2>Um Refúgio na Natureza</h2>
+                    <p>O Skydomo está situado em uma área preservada de Mata Atlântica, a apenas 2 horas de São Paulo. Nosso refúgio oferece privacidade total e conexão genuína com a natureza, longe da agitação da cidade.</p>
+                    <p>Cada domo foi cuidadosamente posicionado para maximizar as vistas panorâmicas e garantir que nossos hóspedes tenham uma experiência única e memorável em meio à natureza.</p>
+                    <div class="location-features">
+                        <div class="location-feature">
+                            <i class="fas fa-car"></i>
+                            <span>2 horas de São Paulo</span>
+                        </div>
+                        <div class="location-feature">
+                            <i class="fas fa-tree"></i>
+                            <span>Área de Mata Atlântica preservada</span>
+                        </div>
+                        <div class="location-feature">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Privacidade total garantida</span>
+                        </div>
+                        <div class="location-feature">
+                            <i class="fas fa-hiking"></i>
+                            <span>Trilhas privativas na propriedade</span>
+                        </div>
+                    </div>
+                    <a href="https://maps.app.goo.gl/qcb88usp9siSghJaA" target="_blank" class="btn btn-primary" style="margin-top: 20px;">
+                        <i class="fas fa-map-marked-alt"></i> Ver no Google Maps
+                    </a>
+                </div>
+                <div class="location-map" style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px;">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.5237638628905!2d-45.74766340000001!3d-23.549625300000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cd998c12aa148d%3A0xd2285c389e363bff!2sSkydomo!5e0!3m2!1spt-BR!2sbr!4v1762610891372!5m2!1spt-BR!2sbr"
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reserva Section -->
+    <section class="section reservation" id="reservation">
+        <div class="container">
+            <h2 class="section-title">Reserve sua Experiência</h2>
+            <div class="reservation-content">
+                <div class="reservation-info">
+                    <h2>Viva momentos inesquecíveis</h2>
+                    <p>Reserve agora sua estadia em um de nossos domos exclusivos e prepare-se para uma experiência transformadora em meio à natureza. Nossa equipe está pronta para tornar sua estadia memorável.</p>
+                    <p>Entre em contato conosco para verificar disponibilidade e pacotes especiais para lua de mel, aniversários ou escapadas românticas.</p>
+                    <div class="reservation-features">
+                        <div class="reservation-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Check-in personalizado</span>
+                        </div>
+                        <div class="reservation-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Café da manhã gourmet incluso</span>
+                        </div>
+                        <div class="reservation-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Trilhas guiadas privativas</span>
+                        </div>
+                        <div class="reservation-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Observação astronômica noturna</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="reservation-form">
+                    <h3 class="form-title">Solicitar Disponibilidade</h3>
+                    <form id="reservationForm">
+                        <div class="form-group">
+                            <label for="name" class="form-label">Nome Completo</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="form-label">E-mail</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone" class="form-label">Telefone</label>
+                            <input type="tel" id="phone" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="checkin" class="form-label">Data de Check-in</label>
+                            <input type="date" id="checkin" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="checkout" class="form-label">Data de Check-out</label>
+                            <input type="date" id="checkout" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="guests" class="form-label">Número de Hóspedes</label>
+                            <select id="guests" class="form-control" required>
+                                <option value="" disabled selected>Selecione</option>
+                                <option value="1">1 pessoa</option>
+                                <option value="2">2 pessoas</option>
+                                <option value="3">3 pessoas</option>
+                                <option value="4">4 pessoas</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary form-submit">Ver disponibilidade no WhatsApp</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <a href="#" class="logo">
+                            <span class="logo-text">Skydomo</span>
+                        </a>
+                    </div>
+                    <p>Hospedagem única em domos de luxo em meio à natureza. Viva a experiência de dormir sob as estrelas com todo o conforto e sofisticação em um ambiente preservado e exclusivo.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-airbnb"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3>Links Rápidos</h3>
+                    <ul>
+                        <li><a href="#home">Início</a></li>
+                        <li><a href="#about">Sobre</a></li>
+                        <li><a href="#gallery">Galeria</a></li>
+                        <li><a href="#experience">Experiência</a></li>
+                        <li><a href="#testimonials">Depoimentos</a></li>
+                        <li><a href="#location">Localização</a></li>
+                        <li><a href="#reservation">Reserva</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contato</h3>
+                    <p><i class="fas fa-phone contact-icon"></i> (11) 97564-0238</p>
+                    <p><i class="fas fa-envelope contact-icon"></i> contato@skydomo.com.br</p>
+                    <p><i class="fas fa-map-marker-alt contact-icon"></i> <a href="https://maps.app.goo.gl/qcb88usp9siSghJaA" target="_blank">Área de Preservação - SP</a></p>
+                    <p><i class="fas fa-clock contact-icon"></i> Check-in: 14h | Check-out: 12h</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Skydomo. Todos os direitos reservados. | Desenvolvido com <i class="fas fa-heart" style="color: var(--gold);"></i> para amantes da natureza</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // Menu Mobile Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+        }));
+
+        // Header Scroll Effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            header.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Form Submission
+        document.getElementById('reservationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const checkin = document.getElementById('checkin').value;
+            const checkout = document.getElementById('checkout').value;
+            const guests = document.getElementById('guests').value;
+            
+            const message = `Olá, me chamo ${name}. Meu telefone é ${phone} e meu e-mail é ${email}. Gostaria de verificar a disponibilidade do Skydomo para ${guests} hóspede(s) no período de ${checkin} a ${checkout}.`;
+            const encodedMessage = encodeURIComponent(message);
+            
+            window.open(`https://wa.me/5511975640238?text=${encodedMessage}`, '_blank');
+        });
+
+        // Gallery Filter
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterBtns.forEach(b => b.classList.remove('active'));
+                // Add active class to clicked button
+                btn.classList.add('active');
+                
+                const filter = btn.getAttribute('data-filter');
+                
+                galleryItems.forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Particles.js Configuration
+        particlesJS('particles-js', {
+            particles: {
+                number: {
+                    value: 100,
+                    density: {
+                        enable: true,
+                        value_area: 800
+                    }
+                },
+                color: {
+                    value: "#C6A25A"
+                },
+                shape: {
+                    type: "circle",
+                    stroke: {
+                        width: 0,
+                        color: "#000000"
+                    }
+                },
+                opacity: {
+                    value: 0.5,
+                    random: true,
+                    anim: {
+                        enable: true,
+                        speed: 1,
+                        opacity_min: 0.1,
+                        sync: false
+                    }
+                },
+                size: {
+                    value: 3,
+                    random: true,
+                    anim: {
+                        enable: true,
+                        speed: 2,
+                        size_min: 0.1,
+                        sync: false
+                    }
+                },
+                line_linked: {
+                    enable: false
+                },
+                move: {
+                    enable: true,
+                    speed: 1,
+                    direction: "none",
+                    random: true,
+                    straight: false,
+                    out_mode: "out",
+                    bounce: false
+                }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: {
+                        enable: true,
+                        mode: "repulse"
+                    },
+                    onclick: {
+                        enable: true,
+                        mode: "push"
+                    },
+                    resize: true
+                },
+                modes: {
+                    repulse: {
+                        distance: 100,
+                        duration: 0.4
+                    },
+                    push: {
+                        particles_nb: 4
+                    }
+                }
+            },
+            retina_detect: true
+        });
+
+        // Initialize particles for experience section
+        particlesJS('particles-js-2', {
+            particles: {
+                number: {
+                    value: 60,
+                    density: {
+                        enable: true,
+                        value_area: 800
+                    }
+                },
+                color: {
+                    value: "#C6A25A"
+                },
+                shape: {
+                    type: "circle"
+                },
+                opacity: {
+                    value: 0.3,
+                    random: true
+                },
+                size: {
+                    value: 2,
+                    random: true
+                },
+                line_linked: {
+                    enable: false
+                },
+                move: {
+                    enable: true,
+                    speed: 0.5,
+                    direction: "none",
+                    random: true,
+                    out_mode: "out"
+                }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: {
+                        enable: true,
+                        mode: "repulse"
+                    },
+                    resize: true
+                }
+            }
+        });
+
+        // Create twinkling stars
+        function createStars() {
+            const starsContainer = document.getElementById('twinkling-stars');
+            const starCount = 150;
+            
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                
+                // Random position
+                const top = Math.random() * 100;
+                const left = Math.random() * 100;
+                
+                // Random size
+                const size = Math.random() * 2 + 1;
+                
+                // Random animation delay
+                const delay = Math.random() * 5;
+                
+                star.style.top = `${top}%`;
+                star.style.left = `${left}%`;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.animationDelay = `${delay}s`;
+                
+                starsContainer.appendChild(star);
+            }
+        }
+
+        // Scroll Reveal Animation
+        const scrollReveal = () => {
+            const reveals = document.querySelectorAll('.about-img, .feature, .gallery-item, .experience-card, .testimonial-card');
+            
+            for (let i = 0; i < reveals.length; i++) {
+                const windowHeight = window.innerHeight;
+                const elementTop = reveals[i].getBoundingClientRect().top;
+                const elementVisible = 100;
+                
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add('active');
+                }
+            }
+        };
+
+        // Initialize
+        window.addEventListener('DOMContentLoaded', () => {
+            createStars();
+            scrollReveal();
+        });
+
+        window.addEventListener('scroll', scrollReveal);
+    </script>
+</body>
+</html>
